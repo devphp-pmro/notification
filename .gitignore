@@ -69,6 +69,7 @@ nbdist/
 
 # User-specific stuff
 .ideia
+.idea
 .ideia/.
 .idea/**/workspace.xml
 .idea/**/tasks.xml
