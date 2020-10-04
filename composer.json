@@ -1,0 +1,28 @@
+{
+  "name": "devpmp-pmro/notification",
+  "description": "This is a library that uses composer as the basis for generate email notifications",
+  "minimum-stability": "dev",
+  "license": "MIT",
+  "type": "library",
+  "authors": [
+    {
+      "name": "Leonardo Magalhães",
+      "email": "devphp.pmro@gmail.com",
+      "role": "Developer"
+    }
+  ],
+  "config": {
+    "vendor-dir": "lib_ext"
+  },
+  "autoload": {
+    "psr-4": {
+      "Notification\\": "_app/"
+    },
+    "files": [
+
+    ]
+  },
+  "require": {
+    "phpmailer/phpmailer": "6.1.7.*"
+  }
+}
