@@ -10,7 +10,7 @@
     {
         private $mail = \stdClass::class;
         
-        public function __construct($smtpDebug, $host, $user, $pass, $port, $setFromEmail,$setFromName)
+        public function __construct($smtpDebug, $host, $user, $pass, $smtpSecure,$port, $setFromEmail,$setFromName)
         {
             $this->mail = new PHPMailer(true);
             $this->mail->SMTPDebug = $smtpDebug;                      // Enable verbose debug output
@@ -19,7 +19,7 @@
             $this->mail->SMTPAuth   = true;                                   // Enable SMTP authentication
             $this->mail->Username   = $user;                     // SMTP username
             $this->mail->Password   = $pass;                               // SMTP password
-            $this->mail->SMTPSecure = $smtpDebug;         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
+            $this->mail->SMTPSecure = $smtpSecure;         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
             $this->mail->CharSet = 'utf-8';
             $this->mail->setLanguage('br');
             $this->mail->Port       = $port;                                    // TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
