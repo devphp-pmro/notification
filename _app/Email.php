@@ -1,7 +1,7 @@
 <?php
     
     
-    namespace notification;
+    namespace Notification;
     
     use PHPMailer\PHPMailer\PHPMailer;
     use PHPMailer\PHPMailer\SMTP;
@@ -10,20 +10,20 @@
     {
         private $mail = \stdClass::class;
         
-        public function __construct()
+        public function __construct($smtpDebug, $host, $user, $pass, $port, $setFromEmail,$setFromName)
         {
             $this->mail = new PHPMailer(true);
-            $this->mail->SMTPDebug = SMTP::DEBUG_SERVER;                      // Enable verbose debug output
+            $this->mail->SMTPDebug = $smtpDebug;                      // Enable verbose debug output
             $this->mail->isSMTP();                                            // Send using SMTP
-            $this->mail->Host       = 'smtp.gmail.com';                    // Set the SMTP server to send through
+            $this->mail->Host       = $host;                    // Set the SMTP server to send through
             $this->mail->SMTPAuth   = true;                                   // Enable SMTP authentication
-            $this->mail->Username   = 'devphp.pmro@gmail.com';                     // SMTP username
-            $this->mail->Password   = 'devpmro2020';                               // SMTP password
-            $this->mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
+            $this->mail->Username   = $user;                     // SMTP username
+            $this->mail->Password   = $pass;                               // SMTP password
+            $this->mail->SMTPSecure = $smtpDebug;         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
             $this->mail->CharSet = 'utf-8';
             $this->mail->setLanguage('br');
-            $this->mail->Port       = 587;                                    // TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
-            $this->mail->setFrom('devphp.pmro@gmail.com', 'Leonardo');
+            $this->mail->Port       = $port;                                    // TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
+            $this->mail->setFrom($setFromEmail, $setFromName);
     
     
         }
