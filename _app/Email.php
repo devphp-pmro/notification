@@ -21,21 +21,20 @@
             $this->mail->Password   = $pass;                     // SMTP password
             $this->mail->SMTPSecure = $smtpSecure;               // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
             $this->mail->CharSet = 'utf-8';
-            $this->mail->isHTML(true);
+            $this->mail->isHTML(true);                    // Enable HTML
             $this->mail->setLanguage('br');
             $this->mail->Port       = $port;                     // TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
             $this->mail->setFrom($setFromEmail, $setFromName);
-    
-    
+            
         }
         
-        function sendMail($subject,$body,$replayEmail,$replayName,$adressEmail,$adressName)
+        function sendMail($subject,$body,$adressEmail,$adressName,$replayEmail,$replayName)
         {
             $this->mail->Subject = (string) $subject;
             $this->mail->Body = $body;
-            
-            $this->mail->addReplyTo($replayEmail,$replayName);
+    
             $this->mail->addAddress($adressEmail,$adressName);
+            $this->mail->addReplyTo($replayEmail,$replayName);
             try {
                 $this->mail->send();
             }catch (Exception $exception){
